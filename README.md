@@ -28,18 +28,21 @@ docker compose up -d
 docker compose exec front bash
 ```
 
-コンテナにアクセスしたら、下記操作によりディレクトリを移動し、開発サーバーを起動してください
+コンテナにアクセスしたら、下記操作により.envファイルを作成し、開発サーバーを起動してください
 
 ```
 cd my-app/
+cp .env.example .env
 yarn install
 yarn dev
 ```
 
 ウェブで http://localhost:5173 にアクセスし、「create-liff-app」と表示されていれば起動成功です。
 
-google chrome の検証ツールを開いて　GET https://api.line.me/liff/v2/apps/liffId/contextToken とエラーメッセージが表示されている場合はliffIdが設定されていません。
+.envにLIFFIDが設定されていない場合、create-liff-appの下に、LIFF init failed.と表示されます。
 
 その場合は、LINE Developers よりチャネルを作成し、LIFFIDを取得してください。
 
-上記で取得したLIFFIDを.envのVITE_LIFF_IDに設定することでエラーが解消されます。
+上記で取得したLIFFIDを、.envのVITE_LIFF_IDに設定することでエラーが解消されます。
+
+LIFFIDが正しく設定された場合、create-liff-appの下に、LIFF init succeeded.と表示されます。
