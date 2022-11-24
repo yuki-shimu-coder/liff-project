@@ -32,6 +32,7 @@ docker compose exec front bash
 
 ```
 cd my-app/
+yarn install
 yarn dev
 ```
 
